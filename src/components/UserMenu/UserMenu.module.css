@@ -1,0 +1,7 @@
+.logoutWrapper{
+    display: flex;
+    column-gap: 20px;
+}
+.greet{
+    width: 100%;
+}
