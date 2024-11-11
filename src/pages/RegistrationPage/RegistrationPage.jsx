@@ -4,10 +4,10 @@ import RegistrationForm from '../../components/RegistrationForm/RegistrationForm
 
 const RegistrationPage = () => {
   return (
-    <>
-      <h2>Реєстрація</h2>
+    <dialog open className={css.modal}>
+      <h2>Sign up</h2>
       <RegistrationForm />
-    </>
+    </dialog>
   );
 };
 

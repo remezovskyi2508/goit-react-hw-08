@@ -11,11 +11,11 @@ const LoginForm = () => {
   const passwordFieldId = useId();
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, actions) =>{
+  const handleSubmit = (values, actions) => {
     console.log(values);
     dispatch(login(values));
     actions.resetForm();
-  }
+  };
 
   //State of initialValues
   const contactValue = {
@@ -42,7 +42,12 @@ const LoginForm = () => {
         <label className={css.inputName} htmlFor={emailFieldId}>
           Email
         </label>
-        <Field type="text" name="email" id={emailFieldId} />
+        <Field
+          className={css.field}
+          type="text"
+          name="email"
+          id={emailFieldId}
+        />
         <ErrorMessage
           name="email"
           component="div"
@@ -52,13 +57,20 @@ const LoginForm = () => {
         <label className={css.inputName} htmlFor={passwordFieldId}>
           Password
         </label>
-        <Field type="text" name="password" id={passwordFieldId} />
+        <Field
+          className={css.field}
+          type="text"
+          name="password"
+          id={passwordFieldId}
+        />
         <ErrorMessage
           name="password"
           component="div"
           style={{ color: 'red', fontSize: '12px' }}
         />
-        <button type="submit">Sign in</button>
+        <button className={css.btn} type="submit">
+          Sign in
+        </button>
       </Form>
     </Formik>
   );

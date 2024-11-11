@@ -1,14 +1,22 @@
 import React from 'react';
+import css from './HomePage.module.css';
+import { Link } from 'react-router-dom';
+import { selectIsLoggedIn } from '../../redux/auth/slice';
+import { useSelector } from 'react-redux';
 
 const HomePage = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
-    <div>
-      <h2>Вітаємо у вашому персональному додатку для керування контактами!</h2>
-      <p>
+    <div className={css.homePage}>
+      <h2 className={css.header}>
+        Вітаємо у вашому персональному додатку для керування контактами!
+      </h2>
+      <p className={css.descr}>
         Цей додаток допоможе вам легко та зручно зберігати, редагувати та
-        організовувати ваші контакти. Ви зможете:
+        організовувати ваші контакти.
       </p>
-      <ul>
+      <span>Ви зможете:</span>
+      <ul className={css.list}>
         <li>
           Швидко додавати нові контакти та зберігати важливу інформацію про них.
         </li>
@@ -26,10 +34,14 @@ const HomePage = () => {
         ви завжди мали доступ до важливих контактів у будь-який час та в
         будь-якому місці.
       </p>
-      <p>
-        Розпочніть роботу вже зараз – зареєструйтесь або увійдіть у свій
-        обліковий запис, щоб отримати повний доступ до всіх можливостей!
-      </p>
+      {isLoggedIn ? null : (
+        <p className={css.finalText}>
+          Розпочніть роботу вже зараз –{' '}
+          <Link to="/register">зареєструйтесь</Link> або{' '}
+          <Link to="/login">увійдіть</Link> у свій обліковий запис, щоб отримати
+          повний доступ до всіх можливостей!
+        </p>
+      )}
     </div>
   );
 };

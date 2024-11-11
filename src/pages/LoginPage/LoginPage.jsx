@@ -4,10 +4,10 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 
 const LoginPage = () => {
   return (
-    <>
-      <h2>Вхід</h2>
+    <dialog open className={css.modal}>
+      <h2>Login</h2>
       <LoginForm />
-    </>
+    </dialog>
   );
 };
 

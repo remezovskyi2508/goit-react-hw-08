@@ -2,6 +2,7 @@ import css from './RegistrationForm.module.css';
 import React from 'react';
 import { useId } from 'react';
 import * as Yup from 'yup';
+import clsx from 'clsx';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
@@ -12,8 +13,7 @@ const RegistrationForm = () => {
   const passwordFieldId = useId();
   const dispatch = useDispatch();
 
-
-  const handleSubmit = (values, actions) => { 
+  const handleSubmit = (values, actions) => {
     console.log('values: ', values);
     dispatch(register(values));
     actions.resetForm();
@@ -55,7 +55,13 @@ const RegistrationForm = () => {
         <label className={css.inputName} htmlFor={nameFieldId}>
           Name
         </label>
-        <Field type="text" name="name" id={nameFieldId} placeholder="Adrian Cross"/>
+        <Field
+          className={css.field}
+          type="text"
+          name="name"
+          id={nameFieldId}
+          placeholder="Adrian Cross"
+        />
         <ErrorMessage
           name="name"
           component="div"
@@ -65,7 +71,13 @@ const RegistrationForm = () => {
         <label className={css.inputName} htmlFor={emailFieldId}>
           Email
         </label>
-        <Field type="text" name="email" id={emailFieldId} placeholder="across@mail.com"/>
+        <Field
+          className={css.field}
+          type="text"
+          name="email"
+          id={emailFieldId}
+          placeholder="across@mail.com"
+        />
         <ErrorMessage
           name="email"
           component="div"
@@ -75,13 +87,21 @@ const RegistrationForm = () => {
         <label className={css.inputName} htmlFor={passwordFieldId}>
           Password
         </label>
-        <Field type="text" name="password" id={passwordFieldId} placeholder="examplepwd12345"/>
+        <Field
+          className={css.field}
+          type="text"
+          name="password"
+          id={passwordFieldId}
+          placeholder="examplepwd12345"
+        />
         <ErrorMessage
           name="password"
           component="div"
           style={{ color: 'red', fontSize: '12px' }}
         />
-        <button type="submit">Sign Up</button>
+        <button className={css.btn} type="submit">
+          Sign Up
+        </button>
       </Form>
     </Formik>
   );
