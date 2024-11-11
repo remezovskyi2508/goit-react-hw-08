@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './HomePage.module.css';
 import { Link } from 'react-router-dom';
-import { selectIsLoggedIn } from '../../redux/auth/slice';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import { useSelector } from 'react-redux';
 
 const HomePage = () => {

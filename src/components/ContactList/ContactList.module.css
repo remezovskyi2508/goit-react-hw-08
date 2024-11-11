@@ -1,5 +1,8 @@
-.listItem{
+.listItem {
   list-style-type: none;
+}
+.listWrapper {
+  position: relative;
 }
 .wrapper {
   display: flex;
@@ -7,4 +10,10 @@
   gap: 20px;
   justify-content: center;
   margin-top: 20px;
+}
+.progress {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/slice';
+import { selectUser } from '../../redux/auth/selectors';
 import { logout } from '../../redux/auth/operations';
 import css from './UserMenu.module.css';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
@@ -14,9 +15,9 @@ const UserMenu = () => {
 
   return (
     <div className={css.logoutWrapper}>
-      <span className={css.greet}>Привіт, {user.name}</span>
-      <button type="button" onClick={handleLogout}>
-        Вийти
+      <span className={css.greet}>Hello, <span className={css.name}>{user.name}</span></span>
+      <button className={css.logoutBtn} type="button" onClick={handleLogout}>
+        <LogoutIcon />
       </button>
     </div>
   );

@@ -36,6 +36,7 @@ export default function ContactForm() {
 
   return (
     <Formik
+      className={css.form}
       initialValues={contactValue}
       validationSchema={FeedbackSchema}
       onSubmit={handleSubmit}
@@ -44,7 +45,7 @@ export default function ContactForm() {
         <label className={css.inputName} htmlFor={nameFieldId}>
           Name
         </label>
-        <Field type="text" name="name" id={nameFieldId} />
+        <Field className={css.field} type="text" name="name" id={nameFieldId} />
         <ErrorMessage
           name="name"
           component="div"
@@ -54,13 +55,15 @@ export default function ContactForm() {
         <label className={css.inputName} htmlFor={phoneFieldId}>
           Number
         </label>
-        <Field type="text" name="number" id={phoneFieldId} />
+        <Field className={css.field} type="text" name="number" id={phoneFieldId} />
         <ErrorMessage
           name="number"
           component="div"
           style={{ color: 'red', fontSize: '12px' }}
         />
-        <button type="submit">Submit</button>
+        <button className={css.btn} type="submit">
+          Add Contact
+        </button>
       </Form>
     </Formik>
   );
