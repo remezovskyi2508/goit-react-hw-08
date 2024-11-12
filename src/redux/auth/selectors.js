@@ -1,4 +1,4 @@
-import { createSelector } from "@reduxjs/toolkit";
+import { createSelector } from '@reduxjs/toolkit';
 
 // Auth selectors
 export const selectUser = state => state.auth.user;
@@ -11,7 +11,10 @@ export const selectIsRefreshing = state => state.auth.isRefreshing;
 // Contacts selectors
 export const selectContacts = state => state.contacts.items;
 export const selectContactsLoading = state => state.contacts.loading;
-
+export const selectIsOpen = state => state.contacts.isOpen;
+export const selectIsClose = state => state.contacts.isClose;
+export const selectIsAccept = state => state.contacts.isAccept;
+export const selectModalContactId = state => state.contacts.modalId;
 
 // Filters selectors
 export const selectNameFilter = state => state.filters.name;

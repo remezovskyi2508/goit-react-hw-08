@@ -1,8 +1,15 @@
-# React + Vite
+# My Contacts Book
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## The application provides an easy-to-use interface for managing contacts. Users can register and log in to the system to access all features. The core functionality includes:
 
-Currently, two official plugins are available:
+![image](https://github.com/user-attachments/assets/40d80eb1-8083-4c43-b138-4e6ca83a1e3f)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**- Registration and login:** the ability to create an account and log in using
+a username and password.<br/> **- Adding contacts:** users can add new contacts
+by specifying the name and phone number.<br/> **- Editing contacts:** users can
+edit existing contacts.<br/> **- Deleting contacts:** users can delete contacts,
+confirming the deletion via a modal window.<br/> **- Filtering contacts:** users
+can filter the contact list based on various criteria to quickly find the
+desired information.<br/>
+
+The application offers a simple and intuitive interface for contact management.

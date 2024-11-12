@@ -3,20 +3,20 @@ import { ImUser } from 'react-icons/im';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
-import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/contactsOps';
+import { useDispatch, useSelector } from 'react-redux';
 import DeleteModal from '../DeleteModal/DeleteModal';
+import { selectIsOpen, selectModalContactId } from '../../redux/auth/selectors';
+import { openModal } from '../../redux/contacts/contactsSlice';
 
 export default function Contact({ id, name, number }) {
   const dispatch = useDispatch();
-  const isClose = true;
-  const isOpen = true;
-  const isAccept = false;
-  const awaiAcceptDelete = () => {
-    if (isAccept) {
-      dispatch(deleteContact(id));
-    }
+  const isOpen = useSelector(selectIsOpen);
+  const modalContactId = useSelector(selectModalContactId);
+
+  const handleIsOpenModal = () => {
+    dispatch(openModal(id));
   };
+
   return (
     <div className={css.wrapper}>
       <div className={css.contactInfo}>
@@ -37,11 +37,11 @@ export default function Contact({ id, name, number }) {
         >
           <EditIcon />
         </button>
-        <button className={css.btn} type="button" onClick={awaiAcceptDelete}>
-          <DeleteForeverIcon isClose={isClose} isAccept={isAccept}/>
+        <button className={css.btn} type="button" onClick={handleIsOpenModal}>
+          <DeleteForeverIcon />
         </button>
       </div>
-      {isOpen && <DeleteModal />}
+      {isOpen && modalContactId === id ? <DeleteModal id={id} /> : null}
     </div>
   );
 }

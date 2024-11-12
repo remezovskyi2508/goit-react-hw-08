@@ -7,6 +7,29 @@ const contactsSlice = createSlice({
     items: [],
     loading: false,
     error: null,
+    isOpen: false,
+    isClose: true,
+    isAccept: false,
+    modalId: null,
+  },
+  reducers: {
+    openModal: (state, action) => {
+      state.isAccept = false;
+      state.isOpen = true;
+      state.isClose = false;
+      state.modalId = action.payload;
+    },
+    closeModal: state => {
+      state.isOpen = false;
+      state.isClose = true;
+      state.modalId = null;
+    },
+    acceptAction: state => {
+      state.isAccept = true;
+      state.isOpen = false;
+      state.isClose = true;
+      state.modalId = null;
+    },
   },
   extraReducers: builder => {
     builder
@@ -48,5 +71,7 @@ const contactsSlice = createSlice({
       });
   },
 });
+
+export const { openModal, closeModal, acceptAction } = contactsSlice.actions;
 
 export default contactsSlice.reducer;

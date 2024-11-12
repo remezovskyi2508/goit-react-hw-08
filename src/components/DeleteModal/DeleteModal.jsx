@@ -1,16 +1,29 @@
 import React from 'react';
 import css from './DeleteModal.module.css';
+import { useDispatch } from 'react-redux';
+import { acceptAction, closeModal } from '../../redux/contacts/contactsSlice';
+import { deleteContact } from '../../redux/contacts/contactsOps';
 
-const DeleteModal = (isClose, isAccept) => {
+const DeleteModal = ({ id }) => {
+  const dispatch = useDispatch();
+  const handleIsAccept = () => {
+    dispatch(acceptAction());
+    dispatch(deleteContact(id));
+    dispatch(closeModal());
+  };
+  const handleIsCloseModal = () => {
+    dispatch(closeModal());
+  };
+
   return (
-    <dialog>
+    <dialog open className={css.modalDelete}>
       <p>Are you sure you want to delete this contact?</p>
       <div className={css.actions}>
-        <button className={css.btn} onClick={isAccept}>
-          Да
+        <button className={css.btn} onClick={handleIsAccept}>
+          Yes
         </button>
-        <button className={css.btn} onClick={isClose}>
-          Нет
+        <button className={css.btn} onClick={handleIsCloseModal}>
+          No
         </button>
       </div>
     </dialog>
