@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './contactsOps';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  editContact,
+} from './contactsOps';
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -11,6 +16,8 @@ const contactsSlice = createSlice({
     isClose: true,
     isAccept: false,
     modalId: null,
+    isOpenEditor: false,
+    editorId: null,
   },
   reducers: {
     openModal: (state, action) => {
@@ -29,6 +36,14 @@ const contactsSlice = createSlice({
       state.isOpen = false;
       state.isClose = true;
       state.modalId = null;
+    },
+    openEditor: (state, action) => {
+      state.isOpenEditor = true;
+      state.editorId = action.payload;
+    },
+    closeEditor: state => {
+      state.isOpenEditor = false;
+      state.editorId = null;
     },
   },
   extraReducers: builder => {
@@ -68,10 +83,30 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(editContact.pending, state => {
+        state.loading = true;
+      })
+      .addCase(editContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        const index = state.items.findIndex(
+          item => item.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.items[index] = action.payload;
+          state.isOpenEditor = false;
+          state.editorId = null;
+        }
+      })
+      .addCase(editContact.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
 
-export const { openModal, closeModal, acceptAction } = contactsSlice.actions;
+export const { openModal, closeModal, acceptAction, openEditor, closeEditor } =
+  contactsSlice.actions;
 
 export default contactsSlice.reducer;

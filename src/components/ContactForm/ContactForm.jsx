@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast';
 import css from './ContactForm.module.css';
 
 import { useId } from 'react';
@@ -35,36 +36,49 @@ export default function ContactForm() {
   };
 
   return (
-    <Formik
-      className={css.form}
-      initialValues={contactValue}
-      validationSchema={FeedbackSchema}
-      onSubmit={handleSubmit}
-    >
-      <Form className={css.form}>
-        <label className={css.inputName} htmlFor={nameFieldId}>
-          Name
-        </label>
-        <Field className={css.field} type="text" name="name" id={nameFieldId} />
-        <ErrorMessage
-          name="name"
-          component="div"
-          style={{ color: 'red', fontSize: '12px' }}
-        />
+    <>
+      <Formik
+        className={css.form}
+        initialValues={contactValue}
+        validationSchema={FeedbackSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form className={css.form}>
+          <label className={css.inputName} htmlFor={nameFieldId}>
+            Name
+          </label>
+          <Field
+            className={css.field}
+            type="text"
+            name="name"
+            id={nameFieldId}
+          />
+          <ErrorMessage
+            name="name"
+            component="div"
+            style={{ color: 'red', fontSize: '12px' }}
+          />
 
-        <label className={css.inputName} htmlFor={phoneFieldId}>
-          Number
-        </label>
-        <Field className={css.field} type="text" name="number" id={phoneFieldId} />
-        <ErrorMessage
-          name="number"
-          component="div"
-          style={{ color: 'red', fontSize: '12px' }}
-        />
-        <button className={css.btn} type="submit">
-          Add Contact
-        </button>
-      </Form>
-    </Formik>
+          <label className={css.inputName} htmlFor={phoneFieldId}>
+            Number
+          </label>
+          <Field
+            className={css.field}
+            type="text"
+            name="number"
+            id={phoneFieldId}
+          />
+          <ErrorMessage
+            name="number"
+            component="div"
+            style={{ color: 'red', fontSize: '12px' }}
+          />
+          <button className={css.btn} type="submit">
+            Add Contact
+          </button>
+        </Form>
+      </Formik>
+      <Toaster position="bottom-center" reverseOrder={true} />
+    </>
   );
 }

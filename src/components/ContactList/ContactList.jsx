@@ -8,8 +8,6 @@ import { selectLoading } from '../../redux/auth/selectors';
 import CircularProgressWithLabel from '../../js/CircularProgress/CircularProgress';
 
 export default function ContactList() {
-  //Filtr for list
-  // const filtredContacts = useSelector(selectFilteredContacts);
   const isLoading = useSelector(selectLoading);
   const сontacts = useSelector(selectFilteredContacts);
   const dispatch = useDispatch();
