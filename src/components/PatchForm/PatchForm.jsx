@@ -6,8 +6,8 @@ import * as Yup from 'yup';
 import CloseIcon from '@mui/icons-material/Close';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
-import { editContact } from '../../redux/contacts/contactsOps';
-import { closeEditor } from '../../redux/contacts/contactsSlice';
+import { editContact } from '../../redux/contacts/operations';
+import { closeEditor } from '../../redux/contacts/slice';
 
 //Validation config
 const FeedbackSchema = Yup.object().shape({

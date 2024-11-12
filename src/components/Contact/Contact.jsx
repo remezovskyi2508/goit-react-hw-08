@@ -6,13 +6,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useDispatch, useSelector } from 'react-redux';
 import PatchForm from '../PatchForm/PatchForm';
 import DeleteModal from '../DeleteModal/DeleteModal';
+
+import { openEditor, openModal } from '../../redux/contacts/slice';
 import {
   selectEditorContactId,
   selectIsOpen,
   selectModalContactId,
   selectOpenEditor,
-} from '../../redux/auth/selectors';
-import { openEditor, openModal } from '../../redux/contacts/contactsSlice';
+} from '../../redux/contacts/selectors';
 
 export default function Contact({ id, name, number }) {
   const dispatch = useDispatch();

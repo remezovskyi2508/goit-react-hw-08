@@ -5,7 +5,7 @@ import { useId } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contacts/contactsOps';
+import { addContact } from '../../redux/contacts/operations';
 
 //Validation config
 const FeedbackSchema = Yup.object().shape({

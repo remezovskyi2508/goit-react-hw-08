@@ -2,8 +2,8 @@ import { Toaster } from 'react-hot-toast';
 import React from 'react';
 import css from './DeleteModal.module.css';
 import { useDispatch } from 'react-redux';
-import { acceptAction, closeModal } from '../../redux/contacts/contactsSlice';
-import { deleteContact } from '../../redux/contacts/contactsOps';
+import { acceptAction, closeModal } from '../../redux/contacts/slice';
+import { deleteContact } from '../../redux/contacts/operations';
 
 const DeleteModal = ({ id }) => {
   const dispatch = useDispatch();

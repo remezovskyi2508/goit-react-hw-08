@@ -1,11 +1,13 @@
-import Contact from '../Contact/Contact';
 import css from './ContactList.module.css';
-import { selectFilteredContacts } from '../../redux/auth/selectors';
+
+import CircularProgressWithLabel from '../../js/CircularProgress/CircularProgress';
+import Contact from '../Contact/Contact';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../../redux/contacts/contactsOps';
 import { useEffect } from 'react';
 import { selectLoading } from '../../redux/auth/selectors';
-import CircularProgressWithLabel from '../../js/CircularProgress/CircularProgress';
+import { selectFilteredContacts } from '../../redux/filters/selectors';
+import { fetchContacts } from '../../redux/contacts/operations';
 
 export default function ContactList() {
   const isLoading = useSelector(selectLoading);
